@@ -8,7 +8,7 @@ export class Product {
 
   getProducts = async (req: Request, res: Response) => {
     const products = await this.productsRepository.find();
-        console.log(products);
+    
         return res.json(products);
   };
 }
