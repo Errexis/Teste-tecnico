@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
     "lib": ["esnext"],
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true
   }
 }

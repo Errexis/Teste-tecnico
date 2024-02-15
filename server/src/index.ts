@@ -1,10 +1,14 @@
 import express from "./config/express";
 import http from "http";
+import { appDataSource } from "./database/data-source";
 
-const app = http.createServer(express);
+appDataSource.initialize().then(async () => {
+  const app = http.createServer(express);
 
-const server = app.listen(3000, () =>
-  console.log(`Server running at: http://localhost:3000`)
-);
+  app.listen(3000, () =>
+    console.log(`Server running at: http://localhost:3000`)
+  );
 
-export default server;
+}).catch((error) => {
+  console.log(error)
+});
