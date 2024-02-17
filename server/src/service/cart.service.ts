@@ -1,10 +1,10 @@
 import { appDataSource } from "../database/data-source";
 import { Request, Response } from "express";
-import { CartEntity } from "../database/entity/cart"
+import { Cart } from "../database/entity/cart"
 
-export class Cart {
+export class CartEntity {
 
-  public cartRepository = appDataSource.getRepository(CartEntity);
+  public cartRepository = appDataSource.getRepository(Cart);
 
   getCart = async (req: Request, res: Response) => {
     const cart = await this.cartRepository.find();

@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { Cart } from "../service/cart.service";
+import { CartEntity } from "../service/cart.service";
 
 const router = Router();
-const cart = new Cart();
+const cart = new CartEntity();
 
 router.get("/", cart.getCart);
 

@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { Product } from "../service/products.service";
+import { ProductEntity } from "../service/products.service";
 
 const router = Router();
-const product = new Product();
+const product = new ProductEntity();
 
 router.get("/", product.getProducts);
 

@@ -1,8 +1,8 @@
 import * as dotenv from "dotenv";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { ProductsEntity } from "./entity/product"
-import { CartEntity } from "./entity/cart"
+import { Products } from "./entity/product"
+import { Cart } from "./entity/cart"
 
 dotenv.config();
 
@@ -15,7 +15,7 @@ export const appDataSource = new DataSource({
     database: process.env.DB_NAME,
     synchronize: true,
     logging: false,
-    entities: [ ProductsEntity, CartEntity ],
+    entities: [ Products, Cart ],
     migrations: [],
     subscribers: [],
 });
