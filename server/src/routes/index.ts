@@ -3,6 +3,7 @@ import { logger } from "../middleware/logger";
 import { response } from "../utils/response";
 import exampleRoutes from "./example";
 import productsRoutes from "./products.routes"
+import cartRoutes from "./cart.routes"
 
 export default (app: Application) => {
   app.all("/", async (req: Request, res: Response) => {
@@ -11,4 +12,5 @@ export default (app: Application) => {
 
   app.use("/example", exampleRoutes);
   app.use("/product", productsRoutes);
+  app.use("/cart", cartRoutes);
 };
