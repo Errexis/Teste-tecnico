@@ -1,0 +1,38 @@
+.shopping-cart {
+    padding: 20px;
+  }
+  
+.shopping-cart h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.shopping-cart ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.shopping-cart li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.shopping-cart .total-price {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+.remove-button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: #c82333;
+}

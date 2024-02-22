@@ -1,0 +1,30 @@
+.products-page {
+    padding: 20px;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-item {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-item h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.product-item p {
+    margin-top: 5px;
+    color: #666;
+}
+
+.product-item strong {
+    font-weight: bold;
+}

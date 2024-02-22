@@ -2,7 +2,7 @@ import { appDataSource } from "../database/data-source";
 import { Request, Response } from "express";
 import { Products } from "../database/entity/product"
 
-export class ProductEntity {
+export class Product {
 
   public productsRepository = appDataSource.getRepository(Products);
 
