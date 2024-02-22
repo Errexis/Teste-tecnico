@@ -1,40 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { CartProps, api } from "../../../lib/api"
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
+import './Cart.css'; 
 
 export const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartProps[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
-    async function getCart() {
-      try {
-        const res = await api.getCart();
-        setCartItems(res);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
     getCart();
-  });
+  }, []);
 
-
-  /* const addToCart = (product: Product): void => {
-    setCartItems([...cartItems, product]);
-    setTotalPrice(totalPrice + product.price);
-  }; */
+  async function getCart() {
+    try {
+      const res = await api.getCart();
+      setCartItems(res);
+      const total = res.reduce((acc, item) => acc + item.price, 0);
+      setTotalPrice(parseFloat(total));
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   const removeFromCart = (productId: number): void => {
-    const updatedCart = cartItems.filter(item => item.id !== productId);
     const removedProduct = cartItems.find(item => item.id === productId);
     if (removedProduct) {
-      setTotalPrice(totalPrice - removedProduct.price);
+      setTotalPrice(prevTotalPrice => prevTotalPrice - removedProduct.price);
     }
+    const updatedCart = cartItems.splice(cartItems.indexOf(removedProduct), 1);
     setCartItems(updatedCart);
   };
 
@@ -44,24 +36,12 @@ export const Cart: React.FC = () => {
       <ul>
         {cartItems.map(item => (
           <li key={item.id}>
-            <span>{item.name} - ${item.price}</span>
+            <span>{item.products}  ${item.price}</span>
             <button onClick={() => removeFromCart(item.id)}>Remove</button>
           </li>
         ))}
       </ul>
       <p>Total Price: ${totalPrice.toFixed(2)}</p>
-      <div className="product-list">
-        <h3>Available Products</h3>
-        <ul>
-          <li>
-            <button onClick={() => addToCart({ id: 1, name: 'Product 1', price: 10 })}>Add Product 1</button>
-          </li>
-          <li>
-            <button onClick={() => addToCart({ id: 2, name: 'Product 2', price: 20 })}>Add Product 2</button>
-          </li>
-          {/* Add more products as needed */}
-        </ul>
-      </div>
     </div>
   );
-};
+}

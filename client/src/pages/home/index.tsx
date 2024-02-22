@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { ProductProps, api } from "../../../lib/api"
-
+import './Home.css';
 
 export const Home: React.FC = () => {
   const [products, setProducts] = useState<ProductProps[]>([]);
 
   useEffect(() => {
-    async function getProduct() {
-      try {
-        const res = await api.getProduct();
-        setProducts(res);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    
-    
     getProduct();
-  }, []); // Empty dependency array means this effect will run only once after the initial render.
+  }, []);
 
+  async function getProduct() {
+    try {
+      const res = await api.getProduct();
+      setProducts(res);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <div className="products-page">
